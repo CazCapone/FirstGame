@@ -56,6 +56,7 @@ public class GameMain extends Canvas implements Runnable {
     public void run() {
         //game loop
         while (running) {
+            System.out.println("testing 1");
             update();
             render();
         }
