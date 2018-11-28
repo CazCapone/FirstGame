@@ -1,6 +1,7 @@
 package com.capone;
 
 import com.capone.Graphics.Screen;
+import com.capone.Inputs.Keyboard;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,6 +29,8 @@ public class GameMain extends Canvas implements Runnable {
     
     private Thread thread;
     private JFrame frame;
+    private Keyboard key;
+    private int x = 0, y = 0;
     private boolean running = false;
     
     private BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -41,9 +44,10 @@ public class GameMain extends Canvas implements Runnable {
         setPreferredSize(size); 
         
         screen = new Screen(width, height);
-        
         frame = new JFrame();
         
+        key = new Keyboard();
+        addKeyListener(key);
     }
     
     public static void main (String[] args){
@@ -111,8 +115,14 @@ public class GameMain extends Canvas implements Runnable {
         }
     }
     
+  
     private void update() {
-        
+       key.update();
+       if (key.up) y--;
+       if (key.down) y++;
+       if (key.left) x--;
+       if (key.right) x++;
+
     }
 
     private void render() {
@@ -123,7 +133,7 @@ public class GameMain extends Canvas implements Runnable {
             return;
         }
         screen.clear();
-        screen.render();
+        screen.render(5, 5);
         
         for (int i = 0; i < pixel.length; i++){
             pixel[i] = screen.pixel[i];
