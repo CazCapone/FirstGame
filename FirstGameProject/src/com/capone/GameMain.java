@@ -87,11 +87,10 @@ public class GameMain extends Canvas implements Runnable {
             //Fps 
             if (System.currentTimeMillis() - timer > 1000 ){
                 timer += 1000;
-            //    System.out.println(updates + " ups, " + frames + " fps");
+                //add FPS to title bar
                 frame.setTitle(title + " | " + updates + " ups, " + frames + " fps");
                 updates = 0;
                 frames = 0;
-                
             }
         }
         stop();
