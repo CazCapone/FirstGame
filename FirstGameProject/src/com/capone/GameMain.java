@@ -3,14 +3,11 @@ package com.capone;
 import com.capone.Graphics.Screen;
 import com.capone.Inputs.Keyboard;
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -30,7 +27,7 @@ public class GameMain extends Canvas implements Runnable {
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
-    private int x = 0, y = 0;
+    
     private boolean running = false;
     
     private BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -99,6 +96,19 @@ public class GameMain extends Canvas implements Runnable {
         }
         stop();
     }
+    
+    int x = 0, y = 0;
+    
+    private void update() {
+        
+       key.update();
+        
+       if (key.up) y--;
+       if (key.down) y++;
+       if (key.left) x--;
+       if (key.right) x++;
+       
+    }
 
     public synchronized void start(){
         running = true;
@@ -111,19 +121,11 @@ public class GameMain extends Canvas implements Runnable {
         try {
             thread.join();
         } catch (InterruptedException ex) {
-            Logger.getLogger(GameMain.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
     
-  
-    private void update() {
-       key.update();
-       if (key.up) y--;
-       if (key.down) y++;
-       if (key.left) x--;
-       if (key.right) x++;
-
-    }
+    
 
     private void render() {
         //Create buffer strat
@@ -132,8 +134,9 @@ public class GameMain extends Canvas implements Runnable {
             createBufferStrategy(3);
             return;
         }
+        
         screen.clear();
-        screen.render(5, 5);
+        screen.render(x, y);
         
         for (int i = 0; i < pixel.length; i++){
             pixel[i] = screen.pixel[i];
