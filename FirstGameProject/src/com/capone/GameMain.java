@@ -70,6 +70,8 @@ public class GameMain extends Canvas implements Runnable {
         double delta = 0;
         int frames = 0;
         int updates = 0; 
+        //sets focus on canvas
+        requestFocus();
         
         //game loop
         while (running) {

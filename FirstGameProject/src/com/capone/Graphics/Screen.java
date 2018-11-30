@@ -39,16 +39,12 @@ public class Screen {
     
     public void render(int xOffset, int yOffset){       
         for (int y = 0 ; y < height ; y++){
-            int yy = y + yOffset;
-          //  if (y < 0 || y >= height) break;
-            for (int x = 0 ; x < width ; x++){
-                int xx = x + xOffset;
-           //     if (x < 0 || x >= width) break;
-                
-                //int tileIndex = (x/16) + (y/16) * 64;
-                //use Bitwise operator
-                int tileIndex = ((xx >> 4) & MAP_SIZE_MASK) + ((yy >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
-                pixel[x + y * width] = tiles[tileIndex];
+          int yp = y + yOffset;
+           if (yp < 0 || yp >= height) continue;
+           for (int x = 0 ; x < width ; x++){
+               int xp = x + xOffset;
+               if (xp < 0 || xp >= width) continue;
+                pixel[xp + yp * width] = Sprite.s1.pixels[(x&15) + (y&15) * Sprite.s1.SIZE];
                 
             }
         }
