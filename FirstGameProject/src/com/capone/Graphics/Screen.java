@@ -2,7 +2,6 @@ package com.capone.Graphics;
 
 import com.capone.Level.Tile.Tile;
 import java.util.Random;
-import javafx.scene.paint.Color;
 
 /**
  *

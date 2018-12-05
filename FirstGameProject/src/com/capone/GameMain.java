@@ -2,6 +2,7 @@ package com.capone;
 
 import com.capone.Graphics.Screen;
 import com.capone.Inputs.Keyboard;
+import com.capone.Level.NewLevel;
 import com.capone.Level.RandomLevel;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -9,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.logging.Level;
 import javax.swing.JFrame;
 
 /**
@@ -29,7 +29,7 @@ public class GameMain extends Canvas implements Runnable {
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
-    private Level level;
+    private NewLevel level;
     private boolean running = false;
     
     private BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -44,10 +44,10 @@ public class GameMain extends Canvas implements Runnable {
         
         screen = new Screen(width, height);
         frame = new JFrame();
+        level = new RandomLevel(64, 64);
         
         key = new Keyboard();
         addKeyListener(key);
-        level = new RandomLevel(64,64);
         
     }
     

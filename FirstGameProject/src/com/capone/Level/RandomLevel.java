@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.capone.Level;
 
 import java.util.Random;
@@ -11,14 +7,14 @@ import java.util.Random;
  *
  * @author Caz-Desktop
  */
-public class RandomLevel extends Level {
+public class RandomLevel extends NewLevel {
     
     private static final Random random = new Random();
     
     public RandomLevel(int width, int height) {
         super(width, height);
     }
-    
+  
     protected void createRandomLevel(){
         for (int y = 0; y < height; y++){
             for (int x = 0; x < width; x++){

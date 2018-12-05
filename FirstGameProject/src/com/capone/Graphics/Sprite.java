@@ -17,7 +17,7 @@ public class Sprite {
     private SpriteSheet sheet;
     
     //Create sprite (pixels, x coords on sheet, y coords, 
-    public static Sprite grass = new Sprite(16, 9, 2, SpriteSheet.tiles);
+    public static Sprite grass = new Sprite(16, 8, 2, SpriteSheet.tiles);
     public static Sprite voidSprite = new Sprite(16, 0);
     
     
