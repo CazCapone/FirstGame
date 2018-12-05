@@ -2,12 +2,14 @@ package com.capone;
 
 import com.capone.Graphics.Screen;
 import com.capone.Inputs.Keyboard;
+import com.capone.Level.RandomLevel;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.logging.Level;
 import javax.swing.JFrame;
 
 /**
@@ -27,7 +29,7 @@ public class GameMain extends Canvas implements Runnable {
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
-    
+    private Level level;
     private boolean running = false;
     
     private BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -45,6 +47,8 @@ public class GameMain extends Canvas implements Runnable {
         
         key = new Keyboard();
         addKeyListener(key);
+        level = new RandomLevel(64,64);
+        
     }
     
     public static void main (String[] args){
@@ -70,7 +74,7 @@ public class GameMain extends Canvas implements Runnable {
         double delta = 0;
         int frames = 0;
         int updates = 0; 
-        //sets focus on canvas
+        //sets 
         requestFocus();
         
         //game loop
@@ -138,10 +142,10 @@ public class GameMain extends Canvas implements Runnable {
         }
         
         screen.clear();
-        screen.render(x, y);
+        level.render(x, y, screen);
         
         for (int i = 0; i < pixel.length; i++){
-            pixel[i] = screen.pixel[i];
+            pixel[i] = screen.pixels[i];
         }
         
         Graphics g = buffer.getDrawGraphics();

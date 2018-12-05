@@ -17,7 +17,8 @@ public class Sprite {
     private SpriteSheet sheet;
     
     //Create sprite (pixels, x coords on sheet, y coords, 
-    public static Sprite s1 = new Sprite(16, 9, 2, SpriteSheet.tiles);
+    public static Sprite grass = new Sprite(16, 9, 2, SpriteSheet.tiles);
+    public static Sprite voidSprite = new Sprite(16, 0);
     
     
     public Sprite(int size, int x, int y, SpriteSheet sheet){
@@ -30,6 +31,12 @@ public class Sprite {
         
     }
     
+    public Sprite(int size, int color){
+        SIZE = size;
+        pixels = new int[SIZE*SIZE];
+        setColor(color);
+    }
+    
     private void load(){
         //Grab a sprite from the sheet
         for (int y = 0; y < SIZE; y++){
@@ -39,5 +46,11 @@ public class Sprite {
         }
     
 }
+
+    private void setColor(int color) {
+        for (int i = 0; i < SIZE*SIZE; i++){
+            pixels[i] = color;
+        }
+    }
     
 }

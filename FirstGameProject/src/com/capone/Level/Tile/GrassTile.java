@@ -10,27 +10,16 @@ import com.capone.Graphics.Sprite;
 
 /**
  *
- * @author Caz-Desktop
+ * @author jduclos1
  */
-public class Tile {
-    
-    public int x, y;
-    public Sprite sprite;
-    
-    public static Tile grass = new GrassTile(Sprite.grass);
-    public static Tile voidTile = new VoidTile(Sprite.voidSprite);
-    
-    public Tile(Sprite sprite){
-        this.sprite = sprite;
-        
+public class GrassTile extends Tile{
+
+    public GrassTile(Sprite sprite) {
+        super(sprite);
     }
     
     public void render(int x, int y, Screen screen){
-        
-    }
-    
-    public boolean solid(){
-        return false;
+        screen.renderTile(x, y, this);
     }
     
 }
