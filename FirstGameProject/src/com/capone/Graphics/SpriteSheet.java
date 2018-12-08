@@ -19,7 +19,7 @@ public class SpriteSheet {
     public final int SIZE;
     public int[] pixels;
     
-    public static SpriteSheet tiles = new SpriteSheet("/spritesheet1.png", 512);  
+    public static SpriteSheet tiles = new SpriteSheet("/spritesheet.png", 512);  
 
     public SpriteSheet(String path, int SIZE) {
         this.path = path;

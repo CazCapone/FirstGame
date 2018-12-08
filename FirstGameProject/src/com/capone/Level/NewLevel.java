@@ -45,11 +45,11 @@ public class NewLevel {
         //leftmost corner
         int x0 = xScroll >> 4;
         //rightmost
-        int x1 = (xScroll + screen.width) >> 4;
-        //uppermost
+        int x1 = (xScroll + screen.width + 16) >> 4;
+        //uppermost6
         int y0 = yScroll >> 4;
         //bottommost
-        int y1 = (yScroll + screen.height) >> 4;
+        int y1 = (yScroll + screen.height + 16) >> 4;
         
         for (int y = y0; y < y1; y++){
             for (int x = x0; x < x1; x++){
@@ -60,7 +60,8 @@ public class NewLevel {
     }
     
     public Tile getTile(int x, int y){
-        if (tiles[x+y*width] == 0) return Tile.grass;
+        if (x < 0 || y < 0 || x>= width || y >= height) return Tile.voidTile;
+        if (tiles[x + y * width] == 0) return Tile.grassTile;
         return Tile.voidTile;
     }
 }

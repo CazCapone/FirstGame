@@ -13,6 +13,7 @@ public class RandomLevel extends NewLevel {
     
     public RandomLevel(int width, int height) {
         super(width, height);
+        createRandomLevel();
     }
   
     protected void createRandomLevel(){

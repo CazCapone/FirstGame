@@ -20,7 +20,7 @@ public class GameMain extends Canvas implements Runnable {
     
     //Screen res with height @ 16:9 ratio
     public static int width = 300;
-    public static int height = width / 16 * 9;
+    public static int height = 168;
     public static int scale = 3;
     public static String title = "My Game";
     
@@ -48,20 +48,6 @@ public class GameMain extends Canvas implements Runnable {
         
         key = new Keyboard();
         addKeyListener(key);
-        
-    }
-    
-    public static void main (String[] args){
-        GameMain game = new GameMain();
-        game.frame.setResizable(false);
-        game.frame.setTitle(GameMain.title);
-        game.frame.add(game);
-        game.frame.pack();
-        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        game.frame.setLocationRelativeTo(null);
-        game.frame.setVisible(true);
-        
-        game.start();
         
     }
 
@@ -130,8 +116,6 @@ public class GameMain extends Canvas implements Runnable {
             ex.printStackTrace();
         }
     }
-    
-    
 
     private void render() {
         //Create buffer strat
@@ -155,6 +139,20 @@ public class GameMain extends Canvas implements Runnable {
         //cleans up graphics
         g.dispose();
         buffer.show();
+    }
+    
+        public static void main (String[] args){
+        GameMain game = new GameMain();
+        game.frame.setResizable(false);
+        game.frame.setTitle(GameMain.title);
+        game.frame.add(game);
+        game.frame.pack();
+        game.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        game.frame.setLocationRelativeTo(null);
+        game.frame.setVisible(true);
+        
+        game.start();
+        
     }
     
     

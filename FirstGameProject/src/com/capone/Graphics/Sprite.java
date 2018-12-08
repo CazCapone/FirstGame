@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.capone.Graphics;
 
 /**
@@ -17,7 +12,7 @@ public class Sprite {
     private SpriteSheet sheet;
     
     //Create sprite (pixels, x coords on sheet, y coords, 
-    public static Sprite grass = new Sprite(16, 8, 2, SpriteSheet.tiles);
+    public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
     public static Sprite voidSprite = new Sprite(16, 0);
     
     
